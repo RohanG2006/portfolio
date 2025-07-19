@@ -1,0 +1,591 @@
+/* Basic Resets & Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.8; /* Increased line height for readability on dark background */
+    background-color: #0f0f1c; /* Deep Space Blue - Main background */
+    color: #e0e0e0; /* Light Gray - General text color */
+    scroll-behavior: smooth;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+.container {
+    max-width: 1024px; /* Slightly wider container */
+    margin: 0 auto;
+    padding: 0 25px; /* Increased padding */
+}
+
+a {
+    text-decoration: none;
+    color: #8a2be2; /* Blue Violet - Accent color for links */
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+a:hover {
+    color: #9370db; /* Medium Purple - Lighter hover state */
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3 {
+    color: #e6e6fa; /* Lavender - Headings color */
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 3.2em;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 2.6em;
+    letter-spacing: 0.8px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+/* Underline animation for H2 */
+h2::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background: #8a2be2; /* Blue Violet */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    border-radius: 2px;
+    animation: expandUnderline 1s forwards ease-out; /* Animation */
+}
+
+@keyframes expandUnderline {
+    from { width: 0; }
+    to { width: 60px; }
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.05em;
+    color: #cccccc; /* Slightly darker gray for paragraphs */
+}
+
+/* Header Styling */
+header {
+    background: rgba(15, 15, 28, 0.95); /* Semi-transparent dark background */
+    backdrop-filter: blur(8px); /* Frosted glass effect */
+    color: #e0e0e0;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3); /* Deeper shadow */
+    border-bottom: 1px solid rgba(138, 43, 226, 0.2); /* Subtle accent border */
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e6e6fa; /* Lavender */
+    text-shadow: 0 0 8px rgba(138, 43, 226, 0.5); /* Subtle glow effect */
+    animation: fadeInDown 0.8s ease-out forwards;
+}
+
+header .nav-links {
+    display: flex;
+}
+
+header .nav-links li {
+    margin-left: 30px; /* Increased spacing */
+}
+
+header .nav-links a {
+    color: #cccccc;
+    font-weight: 600;
+    padding: 8px 0; /* Increased padding */
+    position: relative;
+    font-size: 1.05em;
+}
+
+header .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px; /* Thicker underline */
+    background: #8a2be2; /* Blue Violet */
+    left: 50%; /* Start from center */
+    transform: translateX(-50%); /* Center the underline */
+    bottom: -8px; /* Move slightly further down */
+    border-radius: 2px;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+header .nav-links a:hover::after {
+    width: 100%;
+    background: #9370db; /* Lighter color on hover */
+}
+
+/* New: Staggered animation for nav links */
+header .nav-links li:nth-child(1) { animation: fadeInRight 0.7s ease-out forwards 0.2s; opacity: 0;}
+header .nav-links li:nth-child(2) { animation: fadeInRight 0.7s ease-out forwards 0.3s; opacity: 0;}
+header .nav-links li:nth-child(3) { animation: fadeInRight 0.7s ease-out forwards 0.4s; opacity: 0;}
+header .nav-links li:nth-child(4) { animation: fadeInRight 0.7s ease-out forwards 0.5s; opacity: 0;}
+
+
+/* Animation Keyframes */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulseBorder {
+    0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(138, 43, 226, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+}
+
+@keyframes neonGlow {
+    from { text-shadow: 0 0 5px #fff, 0 0 10px #8a2be2; }
+    to { text-shadow: 0 0 10px #fff, 0 0 20px #8a2be2, 0 0 30px #8a2be2; }
+}
+
+/* Apply animation to main sections (controlled by JS for better scroll effect, but fallback here) */
+.hero-about-section,
+.skills-section,
+.projects-section,
+.contact-section {
+    opacity: 0; /* Hide by default */
+    animation: fadeInSlideUp 1s ease-out forwards; /* Longer duration */
+}
+
+/* Delay animations for subsequent sections */
+.skills-section { animation-delay: 0.2s; }
+.projects-section { animation-delay: 0.4s; }
+.contact-section { animation-delay: 0.6s; }
+
+
+/* Hero/About Section Styling */
+.hero-about-section {
+    padding: 150px 0 80px; /* More top padding to account for fixed header */
+    background-color: #1a1a30; /* Darker blue/purple */
+    text-align: center;
+    min-height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content vertically and horizontally */
+    position: relative;
+    overflow: hidden; /* Hide overflow from any animation */
+}
+
+/* Subtle background stars effect (pure CSS) */
+.hero-about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.05) 1%, transparent 2%),
+                radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08) 1%, transparent 2%),
+                radial-gradient(circle at 40% 50%, rgba(255,255,255,0.06) 1%, transparent 2%);
+    background-size: 150px 150px;
+    animation: twinklingStars 30s infinite alternate;
+    pointer-events: none; /* Allow clicks through */
+}
+
+@keyframes twinklingStars {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 60px; /* Increased gap */
+    padding: 30px;
+    background: rgba(26, 26, 48, 0.8); /* Slightly lighter semi-transparent background for content */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border: 1px solid rgba(138, 43, 226, 0.3); /* Subtle border */
+    text-align: left;
+    max-width: 800px; /* Constrain content width */
+    animation: zoomIn 1s ease-out forwards 0.8s; /* Delayed to appear after section */
+    opacity: 0;
+}
+
+.profile-image-container {
+    width: 220px; /* Slightly larger image */
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.6); /* More prominent glow */
+    border: 5px solid #8a2be2; /* Blue Violet border */
+    flex-shrink: 0;
+    margin-right: 40px;
+    animation: zoomIn 1s ease-out forwards 1.2s, pulseBorder 2s infinite ease-in-out 1.2s; /* Delayed and pulsing */
+    opacity: 0;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%); /* Slight desaturation for theme */
+    transition: filter 0.3s ease;
+}
+
+.profile-image:hover {
+    filter: grayscale(0%); /* Full color on hover */
+}
+
+.profile-text {
+    max-width: 700px;
+    text-align: left;
+}
+
+.profile-text h1 {
+    font-size: 3.5em; /* Larger heading */
+    margin-bottom: 20px;
+    color: #e6e6fa;
+    text-align: left;
+    text-shadow: 0 0 15px rgba(138, 43, 226, 0.7); /* Neon glow effect */
+    animation: fadeInSlideUp 1s ease-out forwards 1.5s, neonGlow 2s infinite alternate; /* Delayed and pulsing glow */
+    opacity: 0;
+}
+
+.profile-text p {
+    font-size: 1.15em;
+    color: #cccccc;
+    line-height: 1.8;
+    animation: fadeInSlideUp 1s ease-out forwards 1.7s; /* Delayed */
+    opacity: 0;
+}
+
+
+/* Skills Section Styling */
+.skills-section {
+    padding: 100px 0;
+    background-color: #0f0f1c; /* Same as body for continuity */
+    text-align: center;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Increased gap */
+    margin-top: 50px; /* More space */
+}
+
+.skill-item {
+    background: #2a2a4a; /* Darker blue for skill items */
+    color: #e6e6fa; /* Lavender */
+    padding: 15px 30px; /* Larger padding */
+    border-radius: 30px; /* More rounded */
+    font-size: 1.2em; /* Larger font */
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Deeper shadow */
+    border: 1px solid rgba(138, 43, 226, 0.4); /* Subtle border */
+    animation: zoomIn 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.skill-item:hover {
+    background: #3c3c6a; /* Lighter on hover */
+    transform: translateY(-5px) scale(1.05); /* More pronounced lift and slight scale */
+    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6); /* Glowing shadow on hover */
+}
+
+/* Staggered animation for skill items */
+.skills-grid .skill-item:nth-child(1) { animation-delay: 0.8s; }
+.skills-grid .skill-item:nth-child(2) { animation-delay: 0.9s; }
+.skills-grid .skill-item:nth-child(3) { animation-delay: 1.0s; }
+.skills-grid .skill-item:nth-child(4) { animation-delay: 1.1s; }
+.skills-grid .skill-item:nth-child(5) { animation-delay: 1.2s; }
+/* Add more :nth-child selectors if you add more skills */
+
+
+/* Projects Section Styling */
+.projects-section {
+    padding: 100px 0;
+    background-color: #1a1a30; /* Darker blue/purple */
+    text-align: center;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax */
+    gap: 40px; /* Larger gap */
+    margin-top: 50px;
+}
+
+.portfolio-item {
+    background: #2a2a4a; /* Darker blue */
+    border-radius: 15px; /* More rounded */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3); /* Deeper shadow */
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    padding: 30px; /* Increased padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(138, 43, 226, 0.3); /* Subtle border */
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-8px) scale(1.02); /* More pronounced lift and scale */
+    box-shadow: 0 12px 35px rgba(138, 43, 226, 0.7); /* Stronger glow on hover */
+    border-color: #8a2be2; /* Highlight border on hover */
+}
+
+.portfolio-item h3 {
+    margin: 0 0 15px;
+    font-size: 1.7rem; /* Larger heading */
+    color: #e6e6fa;
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.5); /* Subtle glow */
+}
+
+.portfolio-item p {
+    padding: 0;
+    font-size: 1em;
+    color: #cccccc;
+    flex-grow: 1;
+    margin-bottom: 25px; /* More space */
+}
+
+.portfolio-item .button-small {
+    margin: 0;
+    align-self: flex-start;
+    border: 2px solid #8a2be2; /* Blue Violet border */
+    background: transparent;
+    color: #8a2be2;
+    padding: 12px 22px; /* Larger button */
+    border-radius: 8px; /* Rounded corners */
+    font-weight: 600;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.portfolio-item .button-small:hover {
+    background: #8a2be2;
+    color: #fff;
+    border-color: #9370db;
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.7); /* Glow on button hover */
+}
+
+/* Staggered animation for portfolio items */
+.portfolio-grid .portfolio-item:nth-child(1) { animation-delay: 0.8s; }
+.portfolio-grid .portfolio-item:nth-child(2) { animation-delay: 1.0s; }
+.portfolio-grid .portfolio-item:nth-child(3) { animation-delay: 1.2s; }
+
+
+/* Contact Section Styling */
+.contact-section {
+    padding: 100px 0;
+    background-color: #0f0f1c;
+    text-align: center;
+}
+
+.social-links {
+    margin-top: 40px; /* More space */
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 30px; /* Increased gap */
+}
+
+.social-links a {
+    font-size: 3em; /* Larger icons */
+    color: #e6e6fa; /* Lavender */
+    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+    animation: fadeInDown 0.7s ease-out forwards;
+    opacity: 0;
+}
+
+.social-links a:hover {
+    transform: translateY(-8px) scale(1.1); /* More pronounced lift and scale */
+    text-shadow: 0 0 20px; /* Add glow on hover */
+}
+
+/* Specific icon colors & hover glow */
+.social-links a .fa-github:hover { color: #8a2be2; text-shadow: 0 0 20px rgba(138, 43, 226, 0.7); }
+.social-links a .fa-instagram:hover { color: #E1306C; text-shadow: 0 0 20px #E1306C; }
+.social-links a .fa-linkedin-in:hover { color: #0077B5; text-shadow: 0 0 20px #0077B5; }
+.social-links a .fa-twitter:hover { color: #1DA1F2; text-shadow: 0 0 20px #1DA1F2; }
+.social-links a .fa-snapchat-ghost:hover { color: #FFFC00; text-shadow: 0 0 20px #FFFC00; }
+
+/* Staggered animation for social links */
+.social-links a:nth-child(1) { animation-delay: 0.8s; }
+.social-links a:nth-child(2) { animation-delay: 0.9s; }
+.social-links a:nth-child(3) { animation-delay: 1.0s; }
+.social-links a:nth-child(4) { animation-delay: 1.1s; }
+.social-links a:nth-child(5) { animation-delay: 1.2s; }
+
+
+.email-text {
+    font-size: 1.2em; /* Larger text */
+    color: #cccccc;
+    margin-top: 20px;
+    animation: fadeInSlideUp 0.8s ease-out forwards 1.3s;
+    opacity: 0;
+}
+
+.email-text a {
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.5); /* Subtle glow */
+}
+
+/* Footer Styling */
+footer {
+    background: #0d0d18; /* Even darker blue */
+    color: #b0b0b0; /* Lighter gray for footer text */
+    text-align: center;
+    padding: 25px 0; /* More padding */
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(138, 43, 226, 0.1); /* Subtle top border */
+}
+
+footer p {
+    margin: 0;
+    color: inherit; /* Inherit color from footer */
+}
+
+/* Media Queries for Responsiveness (Important for mobile) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 2em;
+    }
+    .profile-content {
+        flex-direction: column; /* Stack on smaller screens */
+        text-align: center;
+        gap: 30px;
+        padding: 20px;
+    }
+    .profile-image-container {
+        margin-right: 0; /* Remove margin when stacked */
+        margin-bottom: 20px; /* Add bottom margin */
+        width: 180px;
+        height: 180px;
+    }
+    .profile-text h1 {
+        text-align: center;
+        font-size: 2.8em;
+    }
+    .profile-text p {
+        font-size: 1em;
+    }
+    header .nav-links {
+        display: none; /* Hide navigation for simplicity on small screens (can be toggle with JS) */
+    }
+    header nav {
+        justify-content: center; /* Center logo when nav links are hidden */
+    }
+    .social-links a {
+        font-size: 2.5em;
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    .profile-image-container {
+        width: 150px;
+        height: 150px;
+    }
+    .skill-item {
+        padding: 10px 20px;
+        font-size: 1.1em;
+    }
+    .portfolio-item {
+        padding: 20px;
+    }
+    .portfolio-item h3 {
+        font-size: 1.4rem;
+    }
+    .portfolio-item p {
+        font-size: 0.9em;
+    }
+    .social-links a {
+        font-size: 2em;
+        margin: 0 8px;
+    }
+    .email-text {
+        font-size: 1em;
+    }
+}
